@@ -1,4 +1,4 @@
-FROM 4teamwork/ruby:2.4
+FROM 4teamwork/ruby:2.4.4
 
 COPY el-passenger.repo /etc/yum.repos.d/passenger.repo
 RUN set -ex \
