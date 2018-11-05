@@ -1,17 +1,18 @@
 #!/bin/sh
 
-LOGROTATE_LOGFILES="${LOGROTATE_LOGFILES:?Files for rotating must be given}"
-LOGROTATE_FILENUM="${LOGROTATE_FILENUM:-5}"
+PATH_LOGFILES="${PATH_LOGFILES:?Files for rotating must be given}"
+COUNT_ROTATE="${COUNT_ROTATE:-4}"
+FREQUENCY="${FREQUENCY:-weekly}"
 
 cat > /etc/logrotate.conf << EOF
-${LOGROTATE_LOGFILES}
+${PATH_LOGFILES}
 {
-  weekly
+  ${FREQUENCY}
   missingok
   compress
   notifempty
   copytruncate
-  rotate ${LOGROTATE_FILENUM}
+  rotate ${COUNT_ROTATE}
 }
 EOF
 
