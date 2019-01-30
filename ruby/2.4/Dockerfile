@@ -1,10 +1,10 @@
 FROM 4teamwork/centos-buildenv
 
 ENV RUBY_MAJOR 2.4
-ENV RUBY_VERSION 2.4.4
-ENV RUBY_DOWNLOAD_SHA256 1d0034071d675193ca769f64c91827e5f54cb3a7962316a41d5217c7bc6949f0
-ENV RUBYGEMS_VERSION 2.7.7
-ENV BUNDLER_VERSION 1.16.2
+ENV RUBY_VERSION 2.4.5
+ENV RUBY_DOWNLOAD_SHA256 6737741ae6ffa61174c8a3dcdd8ba92bc38827827ab1d7ea1ec78bc3cefc5198
+ENV RUBYGEMS_VERSION 3.0.2
+ENV BUNDLER_VERSION 2.0.1
 
 RUN set -ex \
     && cd /usr/local/src \
@@ -13,7 +13,7 @@ RUN set -ex \
     && rm ruby-$RUBY_VERSION.tar.xz \
     && cd /usr/local/src/ruby-$RUBY_VERSION \
     && ./configure --disable-install-doc --enable-shared \
-    && make \
+    && make -j "$(getconf _NPROCESSORS_ONLN)" \
     && make install \
     && cd /usr/local/src \
     && rm -rf ruby-$RUBY_VERSION \
