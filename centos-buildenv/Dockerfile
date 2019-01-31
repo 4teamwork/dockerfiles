@@ -1,6 +1,6 @@
 FROM centos:7
 MAINTAINER Thomas Buchberger "t.buchberger@4teamwork.ch"
-ENV REFRESHED_AT 2019-01-30
+ENV REFRESHED_AT 2019-01-31
 
 RUN yum -y install epel-release
 
